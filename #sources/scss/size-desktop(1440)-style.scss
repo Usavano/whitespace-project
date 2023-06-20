@@ -1,0 +1,93 @@
+@media (max-width: 1440px) {
+    ._container {
+        max-width: 1480px;
+        margin: 0 auto;
+        padding: 0 32px;
+    }
+    .header {
+        &__container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-menu {
+            margin: 0;
+        }
+    }
+    .main-block {
+        &__img {
+            width: 685px;
+            height: 456.39px;
+        }
+    }
+    .work-mngm-block__body {
+        .project-mngm-block {
+            justify-content: space-between;
+            gap: 0;
+            &__text-block {
+                max-width: 617px;
+            }
+            &__img {
+                width: 719px;
+                height: 448px;
+            }
+            &__buble-svg {
+                top: -140px;
+                left: -350px;
+            }
+        }
+        .work-tgth-block {
+            gap: 160px;
+        }
+    }
+    .extension-block {
+            &__text-block {
+                max-width: 552px;
+            }
+            &__emph-word.emph-word::after {
+                top: 25px;
+                left: 0px;
+            }
+    }
+
+    .customise-block {
+        &__body {
+            gap: 60px;
+        }
+        &__img {
+            width: 670px;
+            height: 500px;
+        }
+        &__text-block {
+            max-width: 606px;
+        }
+    }
+
+    .plan-block {
+        .card_blue, .card_white {
+            max-width: 424px;
+        }
+    }
+
+    .your-work-block { 
+        &__buble-svg {
+            top: -100px;
+            left: -510px;
+        }
+    }
+
+    .your-data-block {
+        &__text-block {
+            max-width: 655px;
+        }
+    }
+
+    .apps-block {
+        background: $primary-color_dark-blue url(../../img/svg/bg/lines-apps.svg) no-repeat 90% 77%;
+        background-size: 1488px 700px;
+        &__text-block {
+            max-width: 654px;
+        }
+    }
+    
+}

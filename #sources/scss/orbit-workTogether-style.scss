@@ -1,0 +1,44 @@
+#outside-orbit-group {
+    @keyframes turnOut {
+        from {
+          transform: rotate(0deg);
+        }
+      
+        to {
+          transform: rotate(360deg);
+        }
+    }
+    transform-origin: center;
+    animation: turnOut 20s linear infinite;
+}
+
+#inside-orbit-group {
+    @keyframes turnIn {
+        from {
+          transform: rotate(0deg);
+        }
+      
+        to {
+          transform: rotate(-360deg);
+        }
+    }
+    transform-origin: center;
+    animation: turnIn 25s linear infinite;
+}
+#bg-mainIcon, #vectors{
+    transition: all .3s ease-in;
+}
+#bg-mainIcon {
+    fill: white;
+}
+#vectors {
+    fill: #5986EF;
+}
+#mainIcon-group:hover {
+    #bg-mainIcon{
+    fill: #5986EF;
+    }
+    #vectors{
+        fill: white;
+    }
+}

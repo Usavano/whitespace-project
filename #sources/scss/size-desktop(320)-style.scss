@@ -1,0 +1,178 @@
+@media (max-width: 320px) {
+    %fontSet-320 {
+        font-size: 36px;
+        line-height: calc(44 / 36 * 100%);
+    }
+    .main-block {
+        background: $primary-color_dark-blue url(../../img/svg/bg/lines\(320\).svg) no-repeat 50% 39%;
+        &__text-block {
+            max-width: 288px;
+        }
+        &__title {
+            font-size: 36px;
+        }
+        &__img {
+            width: 286px;
+            height: 191px;
+        }
+    }
+
+    .work-mngm-block__body {
+        .project-mngm-block {
+            &__text-block {
+                max-width: 288px;
+            }
+            &__title {
+                font-size: 36px;
+                line-height: calc(44 / 36 * 100%);
+            }
+            &__emph-word.emph-word::after{
+                content: url(../../img/svg/paint/paint-under-text-together.svg);
+                top: 15px;
+                left: -30px;
+            }
+            &__img {
+                width: 286px;
+                height: 177px;
+            }
+            &__buble-svg {
+                svg {
+                    width: 250px;
+                    rotate: 90deg;
+                    transform: scaleX(-1);
+                }
+                top: -50px;
+                left: -120px;
+            }
+        }
+        .work-tgth-block {
+            gap: 60px;
+            &__text-block {
+                max-width: 288px;
+            }
+            &__title {
+                font-size: 36px;
+                line-height: calc(44 / 36 * 100%);
+            }
+            &__emph-word.emph-word::after{
+                display: block;
+                content: url(../../img/svg/paint/paint-under-text-together.svg);
+                top: 20px;
+                left: -40px;
+            }
+            svg {
+                width: 290px;
+                height: 290px;
+            }
+        }
+    }
+
+    .extension-block {
+        &__body {
+            padding: 80px 0;
+        }
+        &__text-block {
+            max-width: 288px;
+        }
+        &__emph-word.emph-word::after {
+            display: none;
+            top: 10px;
+            left: -180px;
+        }
+        &__title {
+            @extend %fontSet-320;
+        }
+        &__img {
+            width: 284px;
+            height: 199px;
+        }
+    }
+
+    .customise-block {
+        &__body {
+            flex-direction: column;
+            gap: 60px;
+        }
+        &__img {
+            width: 288px;
+            height: 214px;
+        }
+        &__text-block {
+            max-width: 288px;
+        }
+        &__title {
+            @extend %fontSet-320;
+        }
+        &__emph-word.emph-word::after{
+            display: none;
+        }
+    }
+
+    .your-work-block { 
+        &__body {
+            max-width: 288px;
+        }
+        &__title {
+            @extend %fontSet-320;
+        }
+        &__buble-svg {
+            display: none;
+        }
+        &__emph-word.emph-word::after {
+            top: 60px;
+            left: -230px;
+        }
+    }
+
+    .your-data-block {
+        &__text-block {
+            max-width: 288px;
+        }
+        &__title {
+            @extend %fontSet-320;
+        }
+        &__data-graph {
+            svg {
+            width: 290px;
+            height: 162px;
+            }
+        }
+        &__emph-word.emph-word::after{
+            display: none;
+        }
+    }
+
+    .sponsors-block {
+        &__body {
+            padding: 80px 0;
+        }
+        .logos-block {
+            svg {
+                transform: scale(0.7);
+                // width: 70%;
+                // height: 70%;
+            }
+        }
+        &__title {
+            @extend %fontSet-320;
+        }
+        &__emph-word.emph-word::after {
+            display: none;
+        }
+    }
+
+    .apps-block {
+        background: $primary-color_dark-blue url(../../img/svg/bg/lines-apps-320.svg) no-repeat 50% 90%;
+        background-size: 1143px 1000px;
+        svg {
+            width: 286px;
+            height: 231px;
+        }
+        &__text-block {
+            max-width: 288px;
+        }
+        &__title {
+            @extend %fontSet-320;
+        }
+    }
+}

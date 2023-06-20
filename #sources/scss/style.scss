@@ -1,0 +1,906 @@
+/*-------------Подключаем обнуление-------------*/
+@import 'nullStyle.scss'; 
+
+/*-------------Подключаем анимацию орбиты-------------*/
+@import 'orbit-workTogether-style.scss'; 
+
+/*-------------Подключаем шрифты-------------*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+$inter-font: 'Inter', sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+$montsrt-font: 'Montserrat', sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
+$dmSans-font: 'DM Sans', sans-serif;
+
+// Переменные с цветами
+
+// Первичные
+$primary-color_dark-blue: #043873;
+$primary-color_blue: #4F9CF9;
+// Второстепенные
+$secondary-color_light-yellow: #FFE492;
+$secondary-color_light-blue: #A7CEFC;
+$secondary-color_white: #FFFFFF;
+$secondary-color_black: #212529;
+
+// Миксины
+// Настройка Текста
+@mixin textSettings ($f-family, $f-w, $f-s, $f-lh, $f-color) { 
+    font: {
+    family: $f-family;
+    weight: $f-w;
+    size: $f-s;
+    }
+    line-height: $f-lh;
+    letter-spacing: -0.02em;
+    color: $f-color;
+}
+
+// Настройка Кнопки
+@mixin buttonSettings ($pad-tb,$pad-lr,$bor-r,$bg-color,$bor-w,$bor-color) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: $pad-tb $pad-lr;
+    border-radius: $bor-r;
+    background-color: $bg-color;
+    border: $bor-w solid $bor-color;
+}
+
+/*-------------Шаблоны-------------*/
+.image-container {
+    background: $secondary-color_light-blue;
+}
+.title {
+    margin: 0 0 24px 0;
+    @include textSettings(('Inter', sans-serif), 700, 72px, calc(87 / 72 * 100%), $secondary-color_black);
+}
+.subtitle {
+    margin: 0 0 60px 0;
+    @include textSettings(('Inter', sans-serif), 400, 18px, calc(30 / 18 * 100%), $secondary-color_black);
+}
+
+@each $name-block in 
+(main-block, work-mngm-block, project-mngm-block, work-tgth-block, 
+extension-block, customise-block, plan-block, 
+your-work-block, your-data-block,sponsors-block, apps-block) {
+    .#{$name-block}__emph-word {
+        z-index: 1;
+    }
+    .#{$name-block}__body {
+        padding: 140px 0;
+    }
+}
+.emph-word {
+    position: relative;
+    &::after {
+        position: absolute;
+        top: 25px;
+        left: 0;
+        z-index: -1;
+        content: url(../../img/svg/paint/paint-under-text.svg);
+    }
+}
+/*------------Технические Классы-------------*/
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+._container {
+    max-width: 1480px;
+    margin: 0 auto;
+}
+._b-img {
+    position: relative;
+}
+._b-img img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+/*------------Header-------------*/
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 92px;
+    }
+    /*------------logo-------------*/
+    .logo-group {
+        display: flex;
+        align-items: center;
+        &__text {
+            margin: 0 0 0 10px;
+            @include textSettings(('Inter', sans-serif), 700, 28px, calc(34 / 28 * 100%), $secondary-color_white)
+        }
+    }
+    /*------------Menu Margins-------------*/
+    .header-menu {
+        margin: 0 60px 0 300px;
+    }
+    
+    /*------------menu style-------------*/
+    .menu {
+        &__list {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        &__link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            &::after {
+                content: url(../../img/svg/arrows/header-arrow/header-arrow.svg);
+                display: inline-block;
+                width: 29px;
+                height: 24px;
+            }
+            @include textSettings(('DM Sans', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white)
+        }
+    }
+
+    /*------------header btns style-------------*/
+    .head-btns-block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        &_btn_login {
+            flex: 1 1 126px;
+            @include buttonSettings(16px, 40px, 8px, $secondary-color_light-yellow, none, none);
+            @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $primary-color_dark-blue);
+        }
+        &_btn_try-free {
+            flex: 1 1 227px;
+            overflow: hidden;
+            position: relative;
+            &:hover {
+                .head-btns-block_btn_try-free-text {
+                    transform: translateY(-80px);
+                }
+            }
+            &:hover::after {
+                transform: translateY(-80px);
+            }
+            &::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 70px;
+                background: white;
+                position: absolute;
+                left: 0;
+                top: 80px;
+                transition: all .7s ease;
+            }
+            &-text {
+                position: relative;
+                transition: all .7s ease;
+                z-index: 1;
+                &::after {
+                    margin: 0 0 0 7px;
+                    content: url(../../img/svg/arrows/button-arrow/button-arrow.svg);
+                }
+                &::before {
+                    position: absolute;
+                    content: "Try Whitespace free"; 
+                    color: #4F9CF9;
+                    top: 80px;
+                    left: 0;
+                }
+            }
+            @include buttonSettings(16px, 24px, 8px, $primary-color_blue, none, none);
+            @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white);
+        }
+        &__hum-menu {
+            display: none;
+        }
+    }
+}
+
+/*------------Main Section-------------*/
+.main-block {
+    background: $primary-color_dark-blue url(../../img/svg/bg/lines.svg) no-repeat 50% 77%;
+    /*------------body-------------*/
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 52px;
+        padding: 232px 0 140px;
+    }
+    /*------------text block-------------*/
+    &__text-block {
+        max-width: 600px;
+    }
+    /*------------title-------------*/
+    &__title {
+        color: $secondary-color_white;
+        font-size: 64px;
+    }
+    /*------------subtitle-------------*/
+    &__subtitle {
+        color: $secondary-color_white;
+    }
+    /*------------btn-------------*/
+    &__btn_try-free {
+        max-width: 219px;
+        overflow: hidden;
+        position: relative;
+        &:hover {
+            .main-block__btn_try-free-text {
+                transform: translateY(-80px);
+            }
+        }
+        &:hover::after {
+            transform: translateY(-80px);
+        }
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 70px;
+            background: white;
+            position: absolute;
+            left: 0;
+            top: 80px;
+            transition: all .7s ease;
+        }
+        &-text {
+            position: relative;
+            transition: all .7s ease;
+            z-index: 1;
+            &::after {
+                margin: 0 0 0 7px;
+                content: url(../../img/svg/arrows/button-arrow/button-arrow.svg);
+            }
+            &::before {
+                position: absolute;
+                content: "Try Whitespace free"; 
+                color: #4F9CF9;
+                top: 80px;
+                left: 0;
+            }
+        }
+
+        @include buttonSettings(20px, 20px, 8px, $primary-color_blue, none, none);
+        @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white);
+    }
+    /*------------image-------------*/
+    &__img {
+        width: 824px;
+        height: 549px;
+    }
+}
+
+/*------------Work Managment Block-------------*/
+
+/*------------Body-------------*/
+.work-mngm-block__body {
+    // padding: 140px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+
+/*------------Project Managment-------------*/
+    .project-mngm-block {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // justify-content: space-between;
+        gap: 60px;
+        &__text-block {
+            max-width: 672px;
+        }
+        &__img {
+            width: 748px;
+            height: 547px;
+        }
+        &__btn_get-start {
+            max-width: 201px;
+            overflow: hidden;
+            position: relative;
+            &:hover {
+                .project-mngm-block__btn_get-start-text {
+                    transform: translateY(-80px);
+                }
+            }
+            &:hover::after {
+                transform: translateY(-80px);
+            }
+            &::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 70px;
+                background: $secondary-color_black;
+                position: absolute;
+                left: 0;
+                top: 80px;
+                transition: all .7s ease;
+            }
+            &-text {
+                position: relative;
+                transition: all .7s ease;
+                z-index: 2;
+                &::after {
+                    margin: 0 0 0 7px;
+                    content: url(../../img/svg/arrows/button-arrow/button-arrow.svg);
+                }
+                &::before {
+                    position: absolute;
+                    content: "Get Started"; 
+                    color: $secondary-color_white;
+                    top: 80px;
+                    left: 0;
+                }
+            }
+            @include buttonSettings(20px, 40px, 6px, $primary-color_blue, none, none);
+            @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white);
+        }
+        &__buble-svg {
+            position: absolute;
+            top: 130px;
+            left: -350px;
+            z-index: -2;
+        }
+    }
+
+     /*------------Work together-------------*/
+    .work-tgth-block {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // justify-content: space-between;
+        gap: 100px;
+        &__text-block {
+            max-width: 710px;
+        }
+        &__emph-word.emph-word::after{
+            content: url(../../img/svg/paint/paint-under-text-together.svg);
+            top: 15px;
+            left: 27px;
+        }
+
+        &__btn_try-it {
+            max-width: 186px;
+            overflow: hidden;
+            position: relative;
+            &:hover {
+                .work-tgth-block__btn_try-it-text {
+                    transform: translateY(-80px);
+                }
+            }
+            &:hover::after {
+                transform: translateY(-80px);
+            }
+            &::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 70px;
+                background: $secondary-color_black;
+                position: absolute;
+                left: 0;
+                top: 80px;
+                transition: all .7s ease;
+            }
+            &-text {
+                position: relative;
+                transition: all .7s ease;
+                z-index: 2;
+                &::after {
+                    margin: 0 0 0 7px;
+                    content: url(../../img/svg/arrows/button-arrow/button-arrow.svg);
+                }
+                &::before {
+                    position: absolute;
+                    content: "Try it now"; 
+                    color: $secondary-color_white;
+                    top: 80px;
+                    left: 0;
+                }
+            }
+            @include buttonSettings(20px, 40px, 6px, $primary-color_blue, none, none);
+            @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white);
+        }
+    }
+}
+
+/*------------Extension-------------*/
+.extension-block {
+    background: $primary-color_dark-blue;
+        &__body {
+        // padding: 140px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        }
+        &__text-block {
+            z-index: 1;
+            max-width: 697px;
+        }
+        &__title {
+            color: $secondary-color_white;
+        }
+        &__emph-word.emph-word::after {
+            top: -120px;
+            left: -180px;
+        }
+        &__subtitle {
+            color: $secondary-color_white;
+        }
+        &__btn_lets-go {
+            max-width: 171px;
+            overflow: hidden;
+            position: relative;
+            &:hover {
+                .extension-block__btn_lets-go-text {
+                    transform: translateY(-80px);
+                }
+            }
+            &:hover::after {
+                transform: translateY(-80px);
+            }
+            &::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 70px;
+                background: $secondary-color_white;
+                position: absolute;
+                left: 0;
+                top: 80px;
+                transition: all .7s ease;
+            }
+            &-text {
+                position: relative;
+                transition: all .7s ease;
+                z-index: 2;
+                &::after {
+                    margin: 0 0 0 7px;
+                    content: url(../../img/svg/arrows/button-arrow/button-arrow.svg);
+                }
+                &::before {
+                    position: absolute;
+                    content: "Let’s Go"; 
+                    color: $primary-color_blue;
+                    top: 80px;
+                    left: 0;
+                }
+            }
+            @include buttonSettings(20px, 40px, 6px, $primary-color_blue, none, none);
+            @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white);
+        }
+        &__img {
+            width: 686px;
+            height: 479px;
+        }
+}
+
+/*------------Customise-------------*/
+
+.customise-block {
+    // padding: 140px 0;
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 98px;
+    }
+    &__img {
+        width: 714px;
+        height: 532px;
+    }
+    &__text-block {
+        max-width: 669px;
+    }
+    &__btn_lets-go {
+        max-width: 171px;
+        overflow: hidden;
+        position: relative;
+        &:hover {
+            .customise-block__btn_lets-go-text {
+                transform: translateY(-80px);
+            }
+        }
+        &:hover::after {
+            transform: translateY(-80px);
+        }
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 70px;
+            background: $secondary-color_black;
+            position: absolute;
+            left: 0;
+            top: 80px;
+            transition: all .7s ease;
+        }
+        &-text {
+            position: relative;
+            transition: all .7s ease;
+            z-index: 2;
+            &::after {
+                margin: 0 0 0 7px;
+                content: url(../../img/svg/arrows/button-arrow/button-arrow.svg);
+            }
+            &::before {
+                position: absolute;
+                content: "Let’s Go"; 
+                color: $secondary-color_white;
+                top: 80px;
+                left: 0;
+            }
+        }
+        @include buttonSettings(20px, 40px, 6px, $primary-color_blue, none, none);
+        @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white);
+    }
+}
+
+/*------------Plan Block-------------*/
+.plan-block {
+    // Функция отступов у price info 
+    @each $type in (name,price,descr) {
+        .card__#{$type} {
+            margin: 0 0 25px 0;
+        }
+    }
+    & ul *:not(:last-child){
+        margin: 0 0 28px 0;
+    }
+    & ul {
+        margin: 0 0 25px 0;
+    }
+    &__body {
+        // padding: 140px 0;
+    }
+    &__text-block {
+        text-align: center;
+    }
+    &__emph-word.emph-word::after {
+        top: 20px;
+        left: -50px;
+    }
+
+    .cards-gallery {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        overflow: hidden;
+        * {
+            cursor: pointer
+        }
+    }
+
+    .card {
+        max-width: 472px;
+        background: $secondary-color_white;
+        border-radius: 10px;
+        border: 1px solid $secondary-color_light-yellow;
+
+        & ul li {
+            background-image: url(../../img/svg/list-type/black-type.svg);
+            background-repeat: no-repeat;
+            line-height: calc(23 / 18 * 100%);
+            padding-left: 40px;
+        }
+        &__body {
+            padding: 40px 44px;
+        }
+
+        &__name {
+            @include textSettings(('Inter', sans-serif), 600, 24px, calc(36 / 24 * 100%), $secondary-color_black);
+        }
+        &__price {
+            &::before {
+                content: '$';
+            }
+            @include textSettings(('Inter', sans-serif), 700, 36px, calc(44 / 36 * 100%), $secondary-color_black);
+        }
+        &__descr {
+            @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_black);
+        }
+        &__item {
+            @include textSettings(('Inter', sans-serif), 400, 16px, calc(20 / 16 * 100%), $secondary-color_black);
+        }
+        &__btn {
+            max-width: 168px;
+            @include buttonSettings(16px, 40px, 8px, $secondary-color_white, 1px, $secondary-color_light-yellow);
+            @include textSettings(('Inter', sans-serif), 500, 16px, calc(19 / 16 * 100%), $secondary-color_black);
+        }
+    }
+
+    .active {
+        max-width: 472px;
+        background: $primary-color_dark-blue;
+        border-radius: 10px;
+        border: 0px;
+        & ul li {
+            background-image: url(../../img/svg/list-type/yellow-type.svg);
+            background-repeat: no-repeat;
+            line-height: calc(23 / 18 * 100%);
+            padding-left: 40px;
+        }
+        & .card__body {
+            padding: 80px 44px;
+        }
+        & .card {
+            &__name {
+                @include textSettings(('Inter', sans-serif), 600, 24px, calc(36 / 24 * 100%), $secondary-color_white);
+            }
+            &__price {
+                &::before {
+                    content: '$';
+                }
+                @include textSettings(('Inter', sans-serif), 700, 36px, calc(44 / 36 * 100%), $secondary-color_light-yellow);
+            }
+            &__descr {
+                @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white);
+            }
+            &__item {
+                @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white);
+            }
+            &__btn {
+                max-width: 168px;
+                @include buttonSettings(16px, 40px, 8px, $primary-color_blue, 0px, $secondary-color_light-yellow);
+                @include textSettings(('Inter', sans-serif), 500, 16px, calc(19 / 16 * 100%), $secondary-color_white);
+            }
+        }
+    }
+}
+
+/*------------Your Work Block-------------*/
+.your-work-block {
+    background: $primary-color_dark-blue;
+    position: relative;
+    &__body {
+        max-width: 1064px;
+        margin: 0 auto;
+        // padding: 140px 0;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    &__title, &__subtitle {
+        z-index: 1;
+        color: $secondary-color_white;
+    }
+    &__emph-word.emph-word::after {
+        top: 20px;
+        left: -35px;
+        content: url(../../img/svg/paint/paint-under-text_blue.svg);
+    }
+    &__btn_try-task {
+        max-width: 195px;
+        overflow: hidden;
+        position: relative;
+        &:hover {
+            .your-work-block__btn_try-task-text {
+                transform: translateY(-80px);
+            }
+        }
+        &:hover::after {
+            transform: translateY(-80px);
+        }
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 70px;
+            background: $secondary-color_white;
+            position: absolute;
+            left: 0;
+            top: 80px;
+            transition: all .7s ease;
+        }
+        &-text {
+            position: relative;
+            transition: all .7s ease;
+            z-index: 2;
+            &::after {
+                margin: 0 0 0 7px;
+                content: url(../../img/svg/arrows/button-arrow/button-arrow.svg);
+            }
+            &::before {
+                position: absolute;
+                content: "Try Taskey"; 
+                color: $primary-color_blue;
+                top: 80px;
+                left: 0;
+            }
+        }
+        @include buttonSettings(20px, 40px, 8px, $primary-color_blue, none, none);
+        @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white);
+    }
+
+    &__buble-svg {
+        position: absolute;
+        top: -100px;
+        left: -310px;
+    }
+}
+
+/*------------Your Data Block-------------*/
+.your-data-block {
+    &__body {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        // padding: 140px 0;
+    }
+    &__text-block {
+        max-width: 800px;
+    }
+    &__emph-word.emph-word::after {
+        left: -30px;
+    }
+    &__btn_read-more {
+        max-width: 197px;
+        overflow: hidden;
+        position: relative;
+        &:hover {
+            .your-data-block__btn_read-more-text {
+                transform: translateY(-80px);
+            }
+        }
+        &:hover::after {
+            transform: translateY(-80px);
+        }
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 70px;
+            background: $secondary-color_white;
+            position: absolute;
+            left: 0;
+            top: 80px;
+            transition: all .7s ease;
+        }
+        &-text {
+            position: relative;
+            transition: all .7s ease;
+            z-index: 2;
+            &::after {
+                margin: 0 0 0 7px;
+                content: url(../../img/svg/arrows/button-arrow/button-arrow.svg);
+            }
+            &::before {
+                position: absolute;
+                content: "Read more"; 
+                color: $primary-color_blue;
+                top: 80px;
+                left: 0;
+            }
+        }
+        @include buttonSettings(20px, 40px, 8px, $primary-color_blue, none, none);
+        @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white);
+    }
+}
+
+/*------------Sponsors Block-------------*/
+.sponsors-block {
+    &__body {
+        padding: 140px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 100px;
+    }
+    &__emph-word.emph-word::after {
+        left: -50px;
+    }
+    .logos-block {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+}
+
+/*------------Apps Block-------------*/
+.apps-block {
+    background: $primary-color_dark-blue url(../../img/svg/bg/lines-apps.svg) no-repeat 50% 77%;
+    &__body {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 100px;
+    }
+    &__text-block {
+        max-width: 798px;
+    }
+    &__title, &__subtitle {
+        color: $secondary-color_white;
+    }
+    &__btn_read-more {
+        max-width: 194px;
+        overflow: hidden;
+        position: relative;
+        &:hover {
+            .apps-block__btn_read-more-text {
+                transform: translateY(-80px);
+            }
+        }
+        &:hover::after {
+            transform: translateY(-80px);
+        }
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 70px;
+            background: $secondary-color_white;
+            position: absolute;
+            left: 0;
+            top: 80px;
+            transition: all .7s ease;
+        }
+        &-text {
+            position: relative;
+            transition: all .7s ease;
+            z-index: 2;
+            &::after {
+                margin: 0 0 0 7px;
+                content: url(../../img/svg/arrows/button-arrow/button-arrow.svg);
+            }
+            &::before {
+                position: absolute;
+                content: "Read more"; 
+                color: $primary-color_blue;
+                top: 80px;
+                left: 0;
+            }
+        }
+        @include buttonSettings(20px, 40px, 8px, $primary-color_blue, none, none);
+        @include textSettings(('Inter', sans-serif), 500, 18px, calc(23 / 18 * 100%), $secondary-color_white);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------Подключаем медиа запрос Ноутбук (1440px)-------------*/
+@import 'size-desktop(1440)-style.scss'; 
+/*-------------Подключаем медиа запрос Ноутбук (1152px)-------------*/
+@import 'size-desktop(1152)-style.scss';
+/*-------------Подключаем медиа запрос Планшет (768px)-------------*/
+@import 'size-desktop(768)-style.scss';
+/*-------------Подключаем медиа запрос Телефон (320px)-------------*/
+@import 'size-desktop(320)-style.scss'; 

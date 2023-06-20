@@ -1,0 +1,180 @@
+@media (max-width: 1152px) {
+    %fontSet-1152 {
+        font-size: 64px;
+        line-height: calc(77 / 64 * 100%);
+    }
+    .header {
+        .menu {
+            display: none;
+        }
+        .head-btns-block { 
+            &__hum-menu {
+                display: inline-block;
+                  .hum-menu {
+                    line {
+                        transition: all .7s ease;
+                    }
+                    &:hover {
+                        #line-1 {
+                            transform: rotate(45deg) translateY(12px);
+                            transform-origin: 50% 50%;
+                        }
+                        #line-2 {
+                            transform: scale(0);
+                            }
+                        #line-3 {
+                            transform: rotate(-45deg) translateY(-12px);
+                            transform-origin: 50% 50%;
+                        }
+                    }
+                  }
+
+
+            }
+        }
+    }
+    .main-block {
+        &__text-block {
+            max-width: 470px;
+        }
+        &__img {
+            width: 526px;
+            height: 350px;
+        }
+    }
+    .work-mngm-block__body {
+        .project-mngm-block {
+            justify-content: space-between;
+            gap: 0;
+            &__text-block {
+                max-width: 436px;
+            }
+            &__img {
+                width: 527px;
+                height: 328px;
+            }
+            &__buble-svg {
+                svg {
+                    width: 300px;
+                    height: 420px;
+                    rotate: 90deg;
+                    transform: scaleX(-1);
+                }
+                top: -120px;
+                left: -120px;
+            }
+        }
+        .work-tgth-block {
+            gap: 33px;
+            &__text-block {
+                max-width: 527px;
+            }
+            &__emph-word.emph-word::after{
+                content: url(../../img/svg/paint/paint-under-text-together.svg);
+                top: 15px;
+                left: 5px;
+            }
+            svg {
+                width: 550px;
+                height: 550px;
+            }
+        }
+    }
+
+    .extension-block {
+        &__text-block {
+            max-width: 528px;
+        }
+        &__emph-word.emph-word::after {
+            top: 10px;
+            left: -80px;
+        }
+        &__title {
+            font-size: 60px;
+        }
+        &__img {
+            width: 459px;
+            height: 320px;
+        }
+    }
+
+    .customise-block {
+        &__body {
+            gap: 60px;
+        }
+        &__img {
+            width: 534px;
+            height: 400px;
+        }
+        &__text-block {
+            max-width: 494px;
+        }
+        &__emph-word.emph-word::after{
+            top: 20px;
+            left: -50px;
+        }
+    }
+
+    .plan-block {
+        .card_blue, .card_white {
+            max-width: 341px;
+        }
+    }
+
+    .your-work-block { 
+        &__body {
+            max-width: 650px;
+            margin: 0;
+            text-align: left;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+        &__title {
+            @extend %fontSet-1152
+        }
+        &__buble-svg {
+            display: none;
+        }
+    }
+
+    .your-data-block {
+        &__text-block {
+            max-width: 526px;
+        }
+        &__title {
+            @extend %fontSet-1152
+        }
+        &__data-graph {
+            svg {
+            width: 562px;
+            height: 314px;
+            }
+        }
+        &__emph-word.emph-word::after{
+            top: 15px;
+            left: -30px;
+        }
+    }
+
+    .sponsors-block {
+        &__title {
+            @extend %fontSet-1152;
+        }
+    }
+    
+    .apps-block {
+        background: $primary-color_dark-blue url(../../img/svg/bg/lines-apps.svg) no-repeat 70% 0%;
+        background-size: 1824px 700px;
+        svg {
+            width: 528px;
+            height: 427px;
+        }
+        &__text-block {
+            max-width: 460px;
+        }
+        &__title {
+            @extend %fontSet-1152;
+        }
+    }
+    
+}
